@@ -1,9 +1,14 @@
-namespace ICGames.AbilitySystem.Effectors
+using UnityEngine;
+
+namespace ICGames.AbilitySystem.Modificators
 {
-    public enum Modification
+    using Attributes;
+
+    [System.Serializable]
+    public class Modification
     {
-        Add,
-        Multiply,
-        Custom
+        [field: SerializeField] public AttributeType Attribute { get; private set; }
+        [field: SerializeField] public ModificationType ModificationType { get; private set; }
+        [field: SerializeField] public float Change { get; private set; }
     }
 }

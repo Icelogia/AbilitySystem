@@ -1,4 +1,4 @@
-namespace ICGames.AbilitySystem.Effectors
+namespace ICGames.AbilitySystem.Modificators
 {
     public enum Timing
     {
