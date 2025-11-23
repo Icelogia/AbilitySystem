@@ -1,11 +1,28 @@
-using System.Collections;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using ShatteredIceStudio.AbilitySystem.Modificators;
-using UnityEngine;
 
 namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
     public partial class AttributeSet
     {
+        private CancellationTokenSource cancellationTokenSource;
+
+        private void InitCancelationToken()
+        {
+            cancellationTokenSource = new CancellationTokenSource();
+        }
+
+        private void CancelToken()
+        {
+            cancellationTokenSource.Cancel();
+        }
+
+        private void DisposeToken()
+        {
+            cancellationTokenSource.Dispose();
+        }
+
         public void Apply(Modificator modificator)
         {
             switch (modificator.Timing)
@@ -28,31 +45,21 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
             HandleModifications(modificator);
         }
 
-        private void ApplyDelayed(Modificator modificator)
+        private async UniTask ApplyDelayed(Modificator modificator)
         {
-            StartCoroutine(DelayedEffector(modificator));
-        }
-
-        private IEnumerator DelayedEffector(Modificator modificator)
-        {
-            yield return new WaitForSeconds(modificator.Delay);
+            await UniTask.WaitForSeconds(modificator.Delay, cancellationToken: cancellationTokenSource.Token);
             ApplyStatusConditions(modificator);
             HandleModifications(modificator);
         }
 
-        private void ApplyPeriod(Modificator modificator)
-        {
-            StartCoroutine(PeriodEffector(modificator));
-        }
-
-        private IEnumerator PeriodEffector(Modificator modificator)
+        private async UniTask ApplyPeriod(Modificator modificator)
         {
             ApplyStatusConditions(modificator);
 
             for (int x = 0; x < modificator.Ticks; x++)
             {
                 HandleModifications(modificator);
-                yield return new WaitForSeconds(modificator.PeriodBetweenTicks);
+                await UniTask.WaitForSeconds(modificator.PeriodBetweenTicks, cancellationToken: cancellationTokenSource.Token);
             }
 
             RemoveStatusConditions(modificator);

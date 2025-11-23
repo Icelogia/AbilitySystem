@@ -11,7 +11,7 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
     {
         public Dictionary<AttributeType, Attribute> Attributes = new Dictionary<AttributeType, Attribute>();
 
-        private void Awake()
+        private void InitAttributes()
         {
             Attributes.Add(AttributeType.Health, new Attribute(health, SetHealth, GetHealth));
             Attributes.Add(AttributeType.MaxHealth, new Attribute(maxHealth, SetMaxHealth, GetMaxHealth));
