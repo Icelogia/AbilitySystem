@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ICGames.AbilitySystem.Attributes
+namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
     /// <summary>
     /// Class containing all the attributes of the characters and type mapping.

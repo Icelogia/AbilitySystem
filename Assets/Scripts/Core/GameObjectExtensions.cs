@@ -1,4 +1,4 @@
-using ICGames.Core.Objectpool;
+using ShatteredIceStudio.Core.Objectpool;
 using UnityEngine;
 
 public static class GameObjectExtensions

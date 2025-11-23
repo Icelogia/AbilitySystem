@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ICGames.Core.Objectpool
+namespace ShatteredIceStudio.Core.Objectpool
 {
     public class ObjectPool : Singleton<ObjectPool>
     {

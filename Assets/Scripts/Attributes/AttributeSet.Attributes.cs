@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ICGames.AbilitySystem.Attributes
+namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
     public delegate void OnAttributeChanged<T>(T oldValue, T newValue);
 

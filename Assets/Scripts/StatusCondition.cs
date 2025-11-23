@@ -1,4 +1,4 @@
-namespace ICGames.AbilitySystem
+namespace ShatteredIceStudio.AbilitySystem
 {
     public enum StatusCondition
     {

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ICGames.AbilitySystem.AbilityControllers
+namespace ShatteredIceStudio.AbilitySystem.AbilityControllers
 {
-    using ICGames.Core;
+    using ShatteredIceStudio.Core;
 
     public class AbilityController : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ICGames.AbilitySystem.Modificators
+namespace ShatteredIceStudio.AbilitySystem.Modificators
 {
     using Attributes;
 

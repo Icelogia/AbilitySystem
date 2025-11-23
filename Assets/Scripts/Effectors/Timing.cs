@@ -1,4 +1,4 @@
-namespace ICGames.AbilitySystem.Modificators
+namespace ShatteredIceStudio.AbilitySystem.Modificators
 {
     public enum Timing
     {

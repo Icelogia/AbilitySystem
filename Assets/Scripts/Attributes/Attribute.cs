@@ -1,6 +1,6 @@
 using System;
 
-namespace ICGames.AbilitySystem.Attributes
+namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
     /// <summary>
     /// Class used as wrapper to single attribute functionality. Doesn't contains the on change event.

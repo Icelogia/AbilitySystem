@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ICGames.AbilitySystem.Attributes
+namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
     public partial class AttributeSet : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ICGames.AbilitySystem
+namespace ShatteredIceStudio.AbilitySystem
 {
     public interface IAbilityHolder
     {

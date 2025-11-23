@@ -1,8 +1,8 @@
 using System.Collections;
-using ICGames.AbilitySystem.Modificators;
+using ShatteredIceStudio.AbilitySystem.Modificators;
 using UnityEngine;
 
-namespace ICGames.AbilitySystem.Attributes
+namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
     public partial class AttributeSet
     {

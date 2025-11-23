@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ICGames.Core
+namespace ShatteredIceStudio.Core
 {
     [Serializable]
     public class Duration

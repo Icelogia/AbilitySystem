@@ -1,4 +1,4 @@
-namespace ICGames.AbilitySystem.Attributes
+namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
     public enum AttributeType
     {

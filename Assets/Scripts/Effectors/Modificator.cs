@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace ICGames.AbilitySystem.Modificators
+namespace ShatteredIceStudio.AbilitySystem.Modificators
 {
     [CreateAssetMenu(fileName = "Modificator", menuName = "Modificator/Init", order = 1)]
     public class Modificator : ScriptableObject
