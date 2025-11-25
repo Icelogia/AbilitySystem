@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
+using ShatteredIceStudio.AbilitySystem.Modificators;
 
-namespace ShatteredIceStudio.AbilitySystem.Modificators
+namespace ShatteredIceStudio.AbilitySystem.Effectors
 {
-    [CreateAssetMenu(fileName = "Modificator", menuName = "Modificator/Init", order = 1)]
-    public class Modificator : ScriptableObject
+    [CreateAssetMenu(fileName = "Effector", menuName = "Ability System/Effector", order = 1)]
+    public class Effector : ScriptableObject
     {
         [Header("Timing")]
         [field: SerializeField] public Timing Timing { get; private set; } = Timing.Instant;
@@ -25,11 +26,11 @@ namespace ShatteredIceStudio.AbilitySystem.Modificators
         [field: SerializeField] public bool Stackable { get; private set; } = false;
 
         [Space]
-        [SerializeField] private List<Modification> modifications = new List<Modification>();
+        [SerializeField] private List<Modificator> modifications = new List<Modificator>();
 
-        public List<Modification> GetModifications()
+        public List<Modificator> GetModifications()
         {
-            return new List<Modification>(modifications);
+            return new List<Modificator>(modifications);
         }
     }
 }

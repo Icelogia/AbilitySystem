@@ -1,9 +1,11 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using ShatteredIceStudio.AbilitySystem.Modificators;
 
 namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
+    using Modificators;
+    using Effectors;
+
     public partial class AttributeSet
     {
         private CancellationTokenSource cancellationTokenSource;
@@ -23,97 +25,80 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
             cancellationTokenSource.Dispose();
         }
 
-        public void Apply(Modificator modificator)
+        public void Apply(Effector effector)
         {
-            switch (modificator.Timing)
+            switch (effector.Timing)
             {
                 case Timing.Instant:
-                    ApplyInstant(modificator);
+                    ApplyInstant(effector);
                     break;
                 case Timing.Delayed:
-                    ApplyDelayed(modificator);
+                    ApplyDelayed(effector);
                     break;
                 case Timing.Period:
-                    ApplyPeriod(modificator);
+                    ApplyPeriod(effector);
                     break;
             }
         }
 
-        private void ApplyInstant(Modificator modificator)
+        private void ApplyInstant(Effector effector)
         {
-            ApplyStatusConditions(modificator);
-            HandleModifications(modificator);
+            ApplyStatusConditions(effector);
+            HandleModifications(effector);
         }
 
-        private async UniTask ApplyDelayed(Modificator modificator)
+        private async UniTask ApplyDelayed(Effector effector)
         {
-            await UniTask.WaitForSeconds(modificator.Delay, cancellationToken: cancellationTokenSource.Token);
-            ApplyStatusConditions(modificator);
-            HandleModifications(modificator);
+            await UniTask.WaitForSeconds(effector.Delay, cancellationToken: cancellationTokenSource.Token);
+            ApplyStatusConditions(effector);
+            HandleModifications(effector);
         }
 
-        private async UniTask ApplyPeriod(Modificator modificator)
+        private async UniTask ApplyPeriod(Effector effector)
         {
-            ApplyStatusConditions(modificator);
+            ApplyStatusConditions(effector);
 
-            for (int x = 0; x < modificator.Ticks; x++)
+            for (int x = 0; x < effector.Ticks; x++)
             {
-                HandleModifications(modificator);
-                await UniTask.WaitForSeconds(modificator.PeriodBetweenTicks, cancellationToken: cancellationTokenSource.Token);
+                HandleModifications(effector);
+                await UniTask.WaitForSeconds(effector.PeriodBetweenTicks, cancellationToken: cancellationTokenSource.Token);
             }
 
-            RemoveStatusConditions(modificator);
+            RemoveStatusConditions(effector);
         }
 
-        private void ApplyStatusConditions(Modificator modificator)
+        private void ApplyStatusConditions(Effector effector)
         {
-            if (modificator.Stackable || !HasCondition(modificator.Condition))
-               ApplyCondition(modificator.Condition);
+            if (effector.Stackable || !HasCondition(effector.Condition))
+               ApplyCondition(effector.Condition);
 
-            if (modificator.Stackable || !HasResistance(modificator.Resistance))
-                ApplyResistance(modificator.Resistance);
+            if (effector.Stackable || !HasResistance(effector.Resistance))
+                ApplyResistance(effector.Resistance);
 
-            if (modificator.Stackable || !HasImmunity(modificator.Immunity))
-                ApplyImmunity(modificator.Immunity);
+            if (effector.Stackable || !HasImmunity(effector.Immunity))
+                ApplyImmunity(effector.Immunity);
         }
 
-        private void RemoveStatusConditions(Modificator modificator)
+        private void RemoveStatusConditions(Effector effector)
         {
-            RemoveCondition(modificator.Condition);
-            RemoveResistance(modificator.Resistance);
-            RemoveImmunity(modificator.Immunity);
+            RemoveCondition(effector.Condition);
+            RemoveResistance(effector.Resistance);
+            RemoveImmunity(effector.Immunity);
         }
 
-        private void HandleModifications(Modificator modificator)
+        private void HandleModifications(Effector effector)
         {
             float modificationMultiplier = 1;
 
-            if (HasResistance(modificator.Condition))
+            if (HasResistance(effector.Condition))
                 modificationMultiplier = 0.5f;
 
-            if (HasImmunity(modificator.Condition))
+            if (HasImmunity(effector.Condition))
                 modificationMultiplier = 0f;
 
-            foreach (Modification mod in modificator.GetModifications())
+            foreach (Modificator mod in effector.GetModifications())
             {
-                Attribute attribute = Attributes[mod.Attribute];
-                float attributeValue = attribute.GetAttribute();
-
-                switch (mod.ModificationType)
-                {
-                    case ModificationType.Add:
-                        attributeValue += mod.Change * modificationMultiplier;
-                        break;
-                    case ModificationType.Multiply:
-                        attributeValue *= mod.Change * modificationMultiplier;
-                        break;
-                    case ModificationType.Custom:
-                        break;
-                    default:
-                        break;
-                }
-
-                attribute.SetAttribute(attributeValue);
+                mod.ApplyModification(this, modificationMultiplier);
             }
         }
     }
