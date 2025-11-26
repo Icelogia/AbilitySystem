@@ -9,64 +9,17 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
     /// </summary>
     public partial class AttributeSet
     {
-        public Dictionary<AttributeType, Attribute> Attributes = new Dictionary<AttributeType, Attribute>();
+        public Dictionary<AttributeType, IAttribute> Attributes = new Dictionary<AttributeType, IAttribute>();
 
         private void InitAttributes()
         {
-            Attributes.Add(AttributeType.Health, new Attribute(health, SetHealth, GetHealth));
-            Attributes.Add(AttributeType.MaxHealth, new Attribute(maxHealth, SetMaxHealth, GetMaxHealth));
-            Attributes.Add(AttributeType.Damage, new Attribute(damage, SetDamage, GetDamage));
+            Attributes.Add(AttributeType.Health, health);
+            Attributes.Add(AttributeType.MaxHealth, maxHealth);
+            Attributes.Add(AttributeType.Speed, speed);
         }
 
-        //Health
-        private float health;
-        public OnAttributeChanged<float> OnHealthChanged;
-
-        public void SetHealth(float newValue)
-        {
-            if (health != newValue)
-            {
-                OnHealthChanged?.Invoke(health, newValue);
-                health = newValue;
-            }
-        }
-
-        public float GetHealth()
-        {
-            return health;
-        }
-
-        //MaxHealth
-        private float maxHealth;
-        public OnAttributeChanged<float> OnMaxHealthChanged;
-
-        public void SetMaxHealth(float newValue)
-        {
-            if (maxHealth != newValue)
-            {
-                OnMaxHealthChanged?.Invoke(maxHealth, newValue);
-                maxHealth = newValue;
-            }
-        }
-
-        public float GetMaxHealth()
-        {
-            return maxHealth;
-        }
-
-        //Damage
-        private float damage;
-        public OnAttributeChanged<float> OnDamageChanged;
-
-        public void SetDamage(float newValue)
-        {
-            OnDamageChanged?.Invoke(damage, newValue);
-            damage = newValue;
-        }
-
-        public float GetDamage()
-        {
-            return damage;
-        }
+        private Attribute<float> health = new Attribute<float>();
+        private Attribute<float> maxHealth = new Attribute<float>();
+        private Attribute<float> speed = new Attribute<float>();
     }
 }
