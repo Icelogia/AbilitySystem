@@ -19,9 +19,8 @@ namespace ShatteredIceStudio.AbilitySystem.Modificators
 
         public override void ApplyModification(AttributeSet attributeSet, float multiplier = 1)
         {
-            IAttribute attribute = attributeSet.Attributes[attributeType];
-
-            float newValue = (float)attribute.GetAttribute();
+            Attribute attribute = attributeSet.Attributes[attributeType];
+            float newValue = attribute.GetAttribute();
 
             switch (operation)
             {

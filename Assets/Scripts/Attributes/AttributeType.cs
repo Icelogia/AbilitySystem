@@ -4,6 +4,6 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
     {
         Health,
         MaxHealth,
-        Speed
+        Damage
     }
 }

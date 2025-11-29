@@ -2,29 +2,32 @@ using System;
 
 namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
-    public interface IAttribute
+    /// <summary>
+    /// Class used as wrapper to single attribute functionality. Doesn't contains the on change event.
+    /// </summary>
+    public class Attribute
     {
-        Type ValueType { get; }
-        public object GetAttribute();
-        public void SetAttribute(object newBalue);
-    }
+        private float attribute;
+        private Action<float> SetAttributeAction;
+        private Func<float> GetAttributeAction;
 
-    public class Attribute<T> : IAttribute
-    {
-        private T attribute;
-        private Action<T> SetAttributeAction;
-
-        public Type ValueType => typeof(T);
-
-        public object GetAttribute()
+        public Attribute(float attribute, Action<float> setAttributeAction, Func<float> getAttributeAction)
         {
+            this.attribute = attribute;
+            SetAttributeAction = setAttributeAction;
+            GetAttributeAction = getAttributeAction;
+        }
+
+        public float GetAttribute()
+        {
+            attribute = GetAttributeAction();
             return attribute;
         }
 
-        public void SetAttribute(object newValue) 
+        public void SetAttribute(float newValue)
         {
-            SetAttributeAction.Invoke((T)newValue);
-            attribute = (T)newValue;
+            SetAttributeAction(newValue);
+            attribute = newValue;
         }
     }
 }
