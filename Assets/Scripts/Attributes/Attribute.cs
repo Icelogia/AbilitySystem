@@ -1,33 +1,29 @@
-using System;
+using UnityEngine;
 
 namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
-    /// <summary>
-    /// Class used as wrapper to single attribute functionality. Doesn't contains the on change event.
-    /// </summary>
-    public class Attribute
+    public class Attribute{}
+
+    public class Attribute<T> : Attribute
     {
-        private float attribute;
-        private Action<float> SetAttributeAction;
-        private Func<float> GetAttributeAction;
+        public delegate void AttributeEvent<V>(V oldValue, V newValue);
 
-        public Attribute(float attribute, Action<float> setAttributeAction, Func<float> getAttributeAction)
-        {
-            this.attribute = attribute;
-            SetAttributeAction = setAttributeAction;
-            GetAttributeAction = getAttributeAction;
-        }
+        public AttributeEvent<T> OnAttributeChanged;
 
-        public float GetAttribute()
+        private T attribute;
+
+        public T Get()
         {
-            attribute = GetAttributeAction();
             return attribute;
         }
 
-        public void SetAttribute(float newValue)
+        public void Set(T newValue)
         {
-            SetAttributeAction(newValue);
             attribute = newValue;
         }
     }
+
+    public class IntAttribute : Attribute<int> {}
+    public class FloatAttribute : Attribute<float> {}
+    public class Vector2Attribute : Attribute<Vector2> {}
 }
