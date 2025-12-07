@@ -6,13 +6,10 @@ namespace ShatteredIceStudio.AbilitySystem.AbilityControllers
 
     public class AbilityController : MonoBehaviour
     {
-        [SerializeField] protected Transform spawnSlot;
-
         [SerializeField] protected float castCooldown = 1f;
         [SerializeField] protected Duration castDelay;
 
         protected float castTimer = 0;
-
         protected IAbilityHolder holder;
 
         private void Awake()
