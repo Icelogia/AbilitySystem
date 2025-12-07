@@ -7,9 +7,9 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
     /// </summary>
     public partial class AttributeSet
     {
-        public Dictionary<AttributeType, Attribute> Attributes = new Dictionary<AttributeType, Attribute>();
+        public readonly Dictionary<AttributeType, Attribute> Attributes = new Dictionary<AttributeType, Attribute>();
 
-        private void InitAttributes()
+        protected virtual void InitAttributes()
         {
             Attributes.Add(AttributeType.Health, Health);
             Attributes.Add(AttributeType.MaxHealth, MaxHealth);

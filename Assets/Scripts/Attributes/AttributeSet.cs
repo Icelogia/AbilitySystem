@@ -4,18 +4,18 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
     public partial class AttributeSet : MonoBehaviour
     {
-        private void Awake()
+        protected virtual void Awake()
         {
             InitCancelationToken();
             InitAttributes();
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             CancelToken();
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             DisposeToken();
         }

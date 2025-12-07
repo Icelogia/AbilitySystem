@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
-using ShatteredIceStudio.AbilitySystem.Modificators;
 
 namespace ShatteredIceStudio.AbilitySystem.Effectors
 {
+    using Modificators;
+
     [CreateAssetMenu(fileName = "Effector", menuName = "Ability System/Effector", order = 1)]
     public class Effector : ScriptableObject
     {
@@ -19,10 +20,8 @@ namespace ShatteredIceStudio.AbilitySystem.Effectors
         [field: SerializeField] public float PeriodBetweenTicks { get; private set; } = 0f;
         [field: SerializeField] public int Ticks { get; private set; } = 1;
 
-        [Header("Status Conditions")]
-        [field: SerializeField] public StatusCondition Condition { get; private set; } = StatusCondition.None;
-        [field: SerializeField] public StatusCondition Resistance { get; private set; } = StatusCondition.None;
-        [field: SerializeField] public StatusCondition Immunity { get; private set; } = StatusCondition.None;
+        [Header("Tags")]
+        [field: SerializeField] public Tag Tag { get; private set; } = Tag.None;
         [field: SerializeField] public bool Stackable { get; private set; } = false;
 
         [Space]
