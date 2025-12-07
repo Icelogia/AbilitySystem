@@ -7,30 +7,28 @@ namespace ShatteredIceStudio.AbilitySystem.AbilityControllers
     public class AbilityController : MonoBehaviour
     {
         [SerializeField] protected Transform spawnSlot;
-        [SerializeField] protected Animator animator;
-        [SerializeField] protected AnimationClip overrideActivateClip = null;
 
-        [SerializeField] protected float attackCooldown = 1f;
-        [SerializeField] protected Duration shootDelay;
+        [SerializeField] protected float castCooldown = 1f;
+        [SerializeField] protected Duration castDelay;
 
-        protected float attackTimer = 0;
+        protected float castTimer = 0;
 
         protected IAbilityHolder holder;
 
         private void Awake()
         {
-            shootDelay.IsFinished = true;
-            shootDelay.OnEndOfDuration += ShootStart;
+            castDelay.IsFinished = true;
+            castDelay.OnEndOfDuration += EndOfCooldown;
         }
 
         protected virtual void Update()
         {
-            if(attackTimer > 0)
+            if(castTimer > 0)
             {
-                attackTimer -= Time.deltaTime;
+                castTimer -= Time.deltaTime;
             }
 
-            shootDelay.UpdateTimer(Time.deltaTime);
+            castDelay.UpdateTimer(Time.deltaTime);
         }
 
         public void SetAbilityHolder(IAbilityHolder newHolder)
@@ -38,24 +36,19 @@ namespace ShatteredIceStudio.AbilitySystem.AbilityControllers
             holder = newHolder;
         }
 
-        public virtual void Shoot() 
+        public virtual void Aim() {}
+
+        public virtual void Cast() 
         {
-            shootDelay.Restart();
-            attackTimer = attackCooldown;
-            if (animator)
-                animator.SetTrigger("shoot");
+            castDelay.Restart();
+            castTimer = castCooldown;
         }
 
-        protected virtual void ShootStart() {}
+        protected virtual void EndOfCooldown() {}
 
-        public virtual bool CanUse()
+        public virtual bool CanCast()
         {
-            return attackTimer <= 0;
-        }
-
-        public AnimationClip GetOverrideActivateAnimationClip()
-        {
-            return overrideActivateClip;
+            return castTimer <= 0;
         }
     }
 }
