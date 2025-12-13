@@ -27,6 +27,9 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
 
         public void Apply(Effector effector)
         {
+            if (!initialized)
+                return;
+
             switch (effector.Timing)
             {
                 case Timing.Instant:
