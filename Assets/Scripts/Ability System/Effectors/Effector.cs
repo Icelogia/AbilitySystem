@@ -9,16 +9,21 @@ namespace ShatteredIceStudio.AbilitySystem.Effectors
     public class Effector : ScriptableObject
     {
         [Header("Timing")]
-        [field: SerializeField] public Timing Timing { get; private set; } = Timing.Instant;
+        [SerializeField] private Timing timing = Timing.Instant;
         /// <summary>
         /// Used for delayed timing.
         /// </summary>
-        [field: SerializeField] public float Delay { get; private set; } = 0f;
+        [SerializeField, ShowIf(nameof(timing), Timing.Delayed)] private float delay = 0f;
         /// <summary>
         /// Used for period timing.
         /// </summary>
-        [field: SerializeField] public float PeriodBetweenTicks { get; private set; } = 0f;
-        [field: SerializeField] public int Ticks { get; private set; } = 1;
+        [SerializeField, ShowIf(nameof(timing), Timing.Period)] private float periodBetweenTicks = 0f;
+        [SerializeField, ShowIf(nameof(timing), Timing.Period)] private int ticks = 1;
+
+        public Timing Timing => timing;
+        public float Delay => delay;
+        public float PeriodBetweenTicks => periodBetweenTicks;
+        public int Ticks => ticks;
 
         [Header("Tags")]
         [field: SerializeField] public Tag Tag { get; private set; } = Tag.None;
