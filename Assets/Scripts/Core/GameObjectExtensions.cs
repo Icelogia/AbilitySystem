@@ -21,6 +21,18 @@ public static class GameObjectExtensions
         return spawnedObject.GetComponent<T>();
     }
 
+    public static T Spawn<T>(this GameObject obj, Vector3 position, Quaternion rotation, bool isActive = true)
+    {
+        GameObject spawnedObject = ObjectPool.Instance.Spawn(obj, position, rotation, isActive);
+        return spawnedObject.GetComponent<T>();
+    }
+
+    public static T Spawn<T>(this GameObject obj, Vector3 position, bool isActive = true)
+    {
+        GameObject spawnedObject = ObjectPool.Instance.Spawn(obj, position, isActive);
+        return spawnedObject.GetComponent<T>();
+    }
+
     public static GameObject Spawn(this GameObject obj, Transform parent, bool isActive = true)
     {
         return ObjectPool.Instance.Spawn(obj, parent, Vector3.zero, isActive);
@@ -34,6 +46,16 @@ public static class GameObjectExtensions
     public static GameObject Spawn(this GameObject obj, Transform parent, Vector3 position, Quaternion rotation, bool isActive = true)
     {
         return ObjectPool.Instance.Spawn(obj, parent, position, rotation, isActive);
+    }
+
+    public static GameObject Spawn(this GameObject obj, Vector3 position, Quaternion rotation, bool isActive = true)
+    {
+        return ObjectPool.Instance.Spawn(obj, position, rotation, isActive);
+    }
+
+    public static GameObject Spawn(this GameObject obj, Vector3 position,  bool isActive = true)
+    {
+        return ObjectPool.Instance.Spawn(obj, position, isActive);
     }
 
     public static void Recycle(this GameObject obj)
