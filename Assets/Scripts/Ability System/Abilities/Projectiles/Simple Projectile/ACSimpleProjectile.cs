@@ -8,6 +8,8 @@ namespace ShatteredIceStudio.AbilitySystem.Abilities
     {
         [SerializeField] private SimpleProjectile projectilePrefab;
 
+        private Vector3 aimDirection;
+
         public override void Aim()
         {
             base.Aim();
@@ -16,6 +18,8 @@ namespace ShatteredIceStudio.AbilitySystem.Abilities
         public override void Cast()
         {
             base.Cast();
+            var projectile = projectilePrefab.gameObject.Spawn<SimpleProjectile>(transform.position);
+            projectile.SetDirection(aimDirection);
         }
     }
 }

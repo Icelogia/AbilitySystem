@@ -45,6 +45,11 @@ namespace ShatteredIceStudio.AbilitySystem.Abilities.Projectiles
             Destroy();
         }
 
+        public void SetDirection(Vector3 direction)
+        {
+            transform.forward = direction;
+        }
+
         private void Destroy()
         {
             Destroy(gameObject);
