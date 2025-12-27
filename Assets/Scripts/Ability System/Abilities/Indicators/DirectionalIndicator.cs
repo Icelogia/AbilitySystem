@@ -2,9 +2,14 @@ using UnityEngine;
 
 namespace ShatteredIceStudio.AbilitySystem.Abilities.Indicators
 {
-    [RequireComponent(typeof(IndicatorInputHandler))]
+    using Input;
+
     public class DirectionalIndicator : MonoBehaviour
     {
-
+        private void Update()
+        {
+            var aimPosition = InputManager.Instance.GetMouseAim();
+            transform.position = aimPosition;
+        }
     }
 }
