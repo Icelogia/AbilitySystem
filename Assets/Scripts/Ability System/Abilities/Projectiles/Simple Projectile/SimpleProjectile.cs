@@ -31,7 +31,7 @@ namespace ShatteredIceStudio.AbilitySystem.Abilities.Projectiles
             }
 
             newPosition = rb.position;
-            newPosition += Vector3.forward * currentSpeed;
+            newPosition += Vector3.right * currentSpeed;
             rb.MovePosition(newPosition);
         }
 

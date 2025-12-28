@@ -2,14 +2,12 @@ using UnityEngine;
 
 namespace ShatteredIceStudio.AbilitySystem.Abilities.Indicators
 {
-    using Input;
 
     public class DirectionalIndicator : MonoBehaviour
     {
-        private void Update()
+        public void SetDirection(Vector3 direction)
         {
-            var aimPosition = InputManager.Instance.GetMouseAim(transform.position);
-            transform.LookAt(aimPosition);
+            transform.LookAt(transform.position + direction);
         }
     }
 }
