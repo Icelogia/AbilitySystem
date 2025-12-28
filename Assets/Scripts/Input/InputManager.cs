@@ -43,11 +43,12 @@ namespace ShatteredIceStudio.Input
             OnCastEnd?.Invoke();
         }
 
-        public Vector2 GetMouseAim()
+        public Vector2 GetMouseAim(Vector3 target)
         {
             var mousePosition = playerInput.Gameplay.AimMousePosition.ReadValue<Vector2>();
-            var mouseWorldPosition = mainCamera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0f));
-            return mousePosition;
+            float depth = mainCamera.ScreenToWorldPoint(target).z;
+            var mouseWorldPosition = mainCamera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, depth));
+            return mouseWorldPosition;
         }
     }
 }

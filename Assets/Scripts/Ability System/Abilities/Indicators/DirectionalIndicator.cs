@@ -8,8 +8,8 @@ namespace ShatteredIceStudio.AbilitySystem.Abilities.Indicators
     {
         private void Update()
         {
-            var aimPosition = InputManager.Instance.GetMouseAim();
-            transform.position = aimPosition;
+            var aimPosition = InputManager.Instance.GetMouseAim(transform.position);
+            transform.LookAt(aimPosition);
         }
     }
 }
