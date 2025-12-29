@@ -47,4 +47,5 @@ MonoBehaviour:
   castCooldown: 1
   castDelay:
     duration: 0
+  indicatorPrefab: {fileID: 6669136563741570872, guid: 974933033c8a75a4689c9ce4bf027b1a, type: 3}
   projectilePrefab: {fileID: 1799996755028997736, guid: acfff97470d73c04fa852b967f85272b, type: 3}
