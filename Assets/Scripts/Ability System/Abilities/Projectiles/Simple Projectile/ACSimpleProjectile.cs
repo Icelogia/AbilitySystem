@@ -35,7 +35,7 @@ namespace ShatteredIceStudio.AbilitySystem.Abilities
             base.Update();
 
             if(holder != null)
-                aimDirection = holder.GetTargetPosition() - transform.position;
+                aimDirection = (holder.GetTargetPosition() - transform.position).normalized;
 
             if (indicator != null)
                 indicator.SetDirection(aimDirection);

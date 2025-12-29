@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Simple Projectile Data
   m_EditorClassIdentifier: Assembly-CSharp::ShatteredIceStudio.AbilitySystem.Abilities.Projectiles.Data.SimpleProjectileData
   Effector: {fileID: 11400000, guid: a809d5dc885c7044b829a05671f0a80b, type: 2}
-  MaxSpeed: 5
-  Acceleration: 1
-  Lifetime: 0
+  MaxSpeed: 1
+  Acceleration: 0.1
+  Lifetime: 3

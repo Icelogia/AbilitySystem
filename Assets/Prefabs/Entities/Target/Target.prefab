@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8303388446711139865}
   - component: {fileID: 567234858862247200}
   - component: {fileID: 7302971990150576353}
-  - component: {fileID: 8350975224466585113}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -90,29 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8350975224466585113
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8592820490782690743}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9023174589687239173
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +101,7 @@ GameObject:
   - component: {fileID: 7983809301433525284}
   - component: {fileID: 5159111856357228621}
   - component: {fileID: 4426097779871415671}
+  - component: {fileID: 2845787241588379947}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -201,3 +178,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShatteredIceStudio.AbilitySystem.Attributes.AttributeSet
   initAttributesEffector: {fileID: 11400000, guid: b8aef96dd4120eb4cb0318eb3a134aaf, type: 2}
+--- !u!136 &2845787241588379947
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9023174589687239173}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
