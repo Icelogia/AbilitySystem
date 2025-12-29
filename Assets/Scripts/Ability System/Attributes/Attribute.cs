@@ -19,6 +19,7 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
 
         public void Set(T newValue)
         {
+            OnAttributeChanged?.Invoke(attribute, newValue);
             attribute = newValue;
         }
     }
