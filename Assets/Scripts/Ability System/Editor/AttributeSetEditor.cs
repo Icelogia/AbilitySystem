@@ -14,8 +14,25 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
         private const string activeEffectors = "Active Effectors";
         private const string historyEffectors = "Effectors History";
 
-        private bool showActiveEffectors = false;
-        private bool showHistoryEffectors = false;
+        private bool showActiveEffectors = true;
+        private bool showHistoryEffectors = true;
+
+        private Foldout activeFoldout;
+        private Foldout historyFoldout;
+
+        private void OnEnable()
+        {
+            AttributeSet attributeSet = (AttributeSet)target;
+            attributeSet.OnActiveListChanged += RefreshActiveList;
+            attributeSet.OnHistoryListChanged += RefreshHistoryList;
+        }
+
+        private void OnDisable()
+        {
+            AttributeSet attributeSet = (AttributeSet)target;
+            attributeSet.OnActiveListChanged -= RefreshActiveList;
+            attributeSet.OnHistoryListChanged -= RefreshHistoryList;
+        }
 
         public override VisualElement CreateInspectorGUI()
         {
@@ -26,8 +43,11 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
 
             var debugLabel = new Label(debugging) { style = { unityFontStyleAndWeight = FontStyle.Bold } };
             var debuggingContainer = CreateDebuggingContainer();
-            var activeFoldout = CreateEffectorContextFoldOut(attributeSet.ActiveEffectors, activeEffectors, showActiveEffectors);
-            var historyFoldout = CreateEffectorContextFoldOut(attributeSet.EffectorsHistory, historyEffectors, showHistoryEffectors);
+            var activeFoldoutContainer = CreateEffectorContextFoldOut(attributeSet.ActiveEffectors, activeEffectors, showActiveEffectors);
+            var historyFoldoutContainer = CreateEffectorContextFoldOut(attributeSet.EffectorsHistory, historyEffectors, showHistoryEffectors);
+
+            activeFoldout = activeFoldoutContainer.Q<Foldout>();
+            historyFoldout = historyFoldoutContainer.Q<Foldout>();
 
             debuggingContainer.Add(activeFoldout);
             debuggingContainer.Add(historyFoldout);
@@ -73,13 +93,12 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
         private VisualElement CreateEffectorContextFoldOut(List<EffectorContext> effectors, string text, bool value)
         {
             VisualElement foldoutContainer = new VisualElement();
-            foldoutContainer.style.paddingRight = 15;
-            foldoutContainer.style.paddingLeft = 15;
 
             var foldout = new Foldout() { text = text, value = value };
             foldout.style.flexGrow = 0;
-            foldout.style.alignSelf = Align.FlexStart;
-
+            foldout.style.alignSelf = Align.Auto;
+            foldout.style.marginLeft = 25;
+            foldout.style.marginRight = 15;
 
             foreach (var context in effectors)
             {
@@ -102,7 +121,10 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
                 objectType = typeof(Effector),
                 value = context.Effector,
                 allowSceneObjects = false,
-                style = { flexGrow = 1 }
+                style =
+                {
+                    width = Length.Percent(50)
+                }
             };
             effectorField.SetEnabled(false); // read-only
             
@@ -112,7 +134,10 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
                 objectType = typeof(GameObject),
                 value = context.Owner != null ? context.Owner.gameObject : null,
                 allowSceneObjects = true,
-                style = { flexGrow = 1 }
+                style = 
+                { 
+                    width = Length.Percent(50)
+                }
             };
             ownerField.SetEnabled(false); // read-only
 
@@ -120,6 +145,30 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
             element.Add(ownerField);
 
             return element;
+        }
+    
+        private void RefreshHistoryList()
+        {
+            AttributeSet attributeSet = (AttributeSet)target;
+
+            historyFoldout.contentContainer.Clear();
+
+            foreach (var context in attributeSet.EffectorsHistory)
+            {
+                historyFoldout.Add(CreateEffectorContextElement(context));
+            }
+        }
+
+        private void RefreshActiveList()
+        {
+            AttributeSet attributeSet = (AttributeSet)target;
+
+            activeFoldout.contentContainer.Clear();
+
+            foreach (var context in attributeSet.ActiveEffectors)
+            {
+                activeFoldout.Add(CreateEffectorContextElement(context));
+            }
         }
     }
 }

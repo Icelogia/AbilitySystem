@@ -6,13 +6,16 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
 {
     using Modificators;
     using Effectors;
-    
 
     public partial class AttributeSet
     {
         private CancellationTokenSource cancellationTokenSource;
 
 #if UNITY_EDITOR
+        public delegate void EffectorListChangeEvent();
+        public event EffectorListChangeEvent OnHistoryListChanged;
+        public event EffectorListChangeEvent OnActiveListChanged;
+
         /// <summary>
         /// List containing history of applied effectors.
         /// </summary>
@@ -160,16 +163,19 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
                 EffectorsHistory.RemoveAt(0);
 
             EffectorsHistory.Add(context);
+            OnHistoryListChanged?.Invoke();
         }
 
         private void AddToActiveEffectors(EffectorContext context)
         {
             ActiveEffectors.Add(context);
+            OnActiveListChanged?.Invoke();
         }
 
         private void RemoveFromActiveEffectors(EffectorContext context)
         {
             ActiveEffectors.Remove(context);
+            OnActiveListChanged?.Invoke();
         }
 #endif
     }
