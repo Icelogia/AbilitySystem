@@ -28,6 +28,7 @@ namespace ShatteredIceStudio.AbilitySystem.Abilities
 
             var projectile = projectilePrefab.gameObject.Spawn<SimpleProjectile>(transform.position);
             projectile.SetDirection(aimDirection);
+            projectile.SetOwner(holder.GetAttributeSet());
         }
 
         protected override void Update()

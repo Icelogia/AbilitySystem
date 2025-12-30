@@ -3,12 +3,14 @@ using UnityEngine;
 namespace ShatteredIceStudio.Entities
 {
     using Input;
+    using AbilitySystem;
     using AbilitySystem.Abilities;
-    using ShatteredIceStudio.AbilitySystem;
+    using AbilitySystem.Attributes;
 
     public class CasterController : MonoBehaviour, IAbilityHolder
     {
         [SerializeField] private AbilityController ability;
+        [SerializeField] private AttributeSet attributeSet;
 
         private void OnEnable()
         {
@@ -26,6 +28,11 @@ namespace ShatteredIceStudio.Entities
         public Vector3 GetTargetPosition()
         {
             return InputManager.Instance.GetMouseAim(transform.position);
+        }
+
+        public AttributeSet GetAttributeSet()
+        {
+            return attributeSet;
         }
     }
 }

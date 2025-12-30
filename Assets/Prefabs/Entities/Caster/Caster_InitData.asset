@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9508de42b9fd21549adcb80457dbcff8, type: 3}
-  m_Name: Simple Projectile Effector
+  m_Name: Caster_InitData
   m_EditorClassIdentifier: Assembly-CSharp::ShatteredIceStudio.AbilitySystem.Effectors.Effector
   timing: 0
   delay: 0
@@ -19,4 +19,5 @@ MonoBehaviour:
   <Tag>k__BackingField: 0
   <Stackable>k__BackingField: 0
   modifications:
-  - {fileID: 11400000, guid: 04ba676e4a7d06c4f8ee106ff8f1d624, type: 2}
+  - {fileID: 11400000, guid: 0013b963a61b6564c9ecef3289cb9d80, type: 2}
+  - {fileID: 11400000, guid: 886ea8bc926030548b000671f46f3a23, type: 2}

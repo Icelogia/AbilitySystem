@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd609c9a763694b458b306e37f61b678, type: 3}
+  m_Script: {fileID: 11500000, guid: e54109906d4427b429d2485ffc9b566f, type: 3}
   m_Name: Simple Projectile Modificator
-  m_EditorClassIdentifier: Assembly-CSharp::ShatteredIceStudio.AbilitySystem.Modificators.AttributeOperationModificator
-  operation: 0
-  attributeType: 0
-  modifierValue: -1
-  modifierValueVector2: {x: 0, y: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::ShatteredIceStudio.AbilitySystem.Modificators.HealthBasedDamageModificator
+  baseDamage: 1
+  ownerMaxHealthPrecentage: 0.1
+  targetMaxHealthPrecentage: 0.5

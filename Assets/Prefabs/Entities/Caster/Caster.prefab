@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3841542407034182025}
   - component: {fileID: 1224079120975147769}
+  - component: {fileID: 2553885458686488345}
   m_Layer: 0
   m_Name: Caster
   m_TagString: Untagged
@@ -47,6 +48,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbilityCaster
   ability: {fileID: 3794466347696181281}
+  attributeSet: {fileID: 2553885458686488345}
+--- !u!114 &2553885458686488345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4074930573530447154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5e3b6aaf0d2764ebeef8cf5f49a0aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShatteredIceStudio.AbilitySystem.Attributes.AttributeSet
+  initAttributesEffector: {fileID: 11400000, guid: 6b01df3bf7d4f484aa267b4c37f6c587, type: 2}
 --- !u!1 &6053967127368387422
 GameObject:
   m_ObjectHideFlags: 0

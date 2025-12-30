@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd609c9a763694b458b306e37f61b678, type: 3}
+  m_Name: Caster_InitMaxHealth
+  m_EditorClassIdentifier: Assembly-CSharp::ShatteredIceStudio.AbilitySystem.Modificators.AttributeOperationModificator
+  operation: 0
+  attributeType: 1
+  modifierValue: 10
+  modifierValueVector2: {x: 0, y: 0}

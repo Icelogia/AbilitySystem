@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ShatteredIceStudio.AbilitySystem.Abilities.Projectiles
 {
-    using ShatteredIceStudio.AbilitySystem.Attributes;
+    using Attributes;
     using Data;
 
     public class SimpleProjectile : MonoBehaviour
@@ -11,6 +11,7 @@ namespace ShatteredIceStudio.AbilitySystem.Abilities.Projectiles
 
         [SerializeField] private SimpleProjectileData data;
 
+        private AttributeSet owner;
         private Vector3 newPosition;
         private float currentSpeed = 0f;
         private float lifeTimer = 0f;
@@ -40,7 +41,7 @@ namespace ShatteredIceStudio.AbilitySystem.Abilities.Projectiles
             var attributeSet = other.GetComponent<AttributeSet>();
 
             if (attributeSet != null)
-                attributeSet.Apply(data.Effector);
+                attributeSet.Apply(data.Effector, owner);
 
             Destroy();
         }
@@ -48,6 +49,11 @@ namespace ShatteredIceStudio.AbilitySystem.Abilities.Projectiles
         public void SetDirection(Vector3 direction)
         {
             transform.forward = direction;
+        }
+
+        public void SetOwner(AttributeSet owner)
+        {
+            this.owner = owner;
         }
 
         private void Destroy()
