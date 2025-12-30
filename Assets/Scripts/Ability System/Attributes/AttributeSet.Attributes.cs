@@ -25,7 +25,7 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
         public void Initialize(Effector initData)
         {
             initialized = true;
-            Apply(initData);
+            Apply(initData, this);
         }
 
         protected virtual void InitAttributes()

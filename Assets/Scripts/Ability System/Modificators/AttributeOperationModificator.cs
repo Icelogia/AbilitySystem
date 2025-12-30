@@ -19,69 +19,69 @@ namespace ShatteredIceStudio.AbilitySystem.Modificators
         [SerializeField] private float modifierValue;
         [SerializeField] private Vector2 modifierValueVector2;
 
-        public override void ApplyModification(AttributeSet attributeSet, float multiplier = 1)
+        public override void ApplyModification(AttributeSet attributeSet, AttributeSet owner)
         {
             Attribute attribute = attributeSet.Attributes[attributeType];
 
             switch(attribute)
             {
                 case IntAttribute intAttribute:
-                    ApplyIntModification(intAttribute, multiplier);
+                    ApplyIntModification(intAttribute, owner);
                     break;
                 case FloatAttribute floatAttribute:
-                    ApplyFloatModification(floatAttribute, multiplier);
+                    ApplyFloatModification(floatAttribute, owner);
                     break;
                 case Vector2Attribute vector2Attribute:
-                    ApplyVecotr2Modification(vector2Attribute, multiplier);
+                    ApplyVecotr2Modification(vector2Attribute, owner);
                     break;
             }
         }
 
-        public void ApplyIntModification(IntAttribute attribute, float multiplier)
+        public void ApplyIntModification(IntAttribute attribute, AttributeSet owner)
         {
             int newValue = attribute.Get();
 
             switch (operation)
             {
                 case Operation.Add:
-                    newValue += MathExtensions.Round(modifierValue * multiplier);
+                    newValue += MathExtensions.Round(modifierValue);
                     break;
                 case Operation.Multiply:
-                    newValue *= MathExtensions.Round(modifierValue * multiplier);
+                    newValue *= MathExtensions.Round(modifierValue);
                     break;
             }
 
             attribute.Set(newValue);
         }
 
-        public void ApplyFloatModification(FloatAttribute attribute, float multiplier)
+        public void ApplyFloatModification(FloatAttribute attribute, AttributeSet owner)
         {
             float newValue = attribute.Get();
 
             switch (operation)
             {
                 case Operation.Add:
-                    newValue += MathExtensions.Round(modifierValue * multiplier);
+                    newValue += MathExtensions.Round(modifierValue);
                     break;
                 case Operation.Multiply:
-                    newValue *= MathExtensions.Round(modifierValue * multiplier);
+                    newValue *= MathExtensions.Round(modifierValue);
                     break;
             }
 
             attribute.Set(newValue);
         }
 
-        public void ApplyVecotr2Modification(Vector2Attribute attribute, float multiplier)
+        public void ApplyVecotr2Modification(Vector2Attribute attribute, AttributeSet owner)
         {
             Vector2 newValue = attribute.Get();
 
             switch (operation)
             {
                 case Operation.Add:
-                    newValue += modifierValueVector2 * multiplier;
+                    newValue += modifierValueVector2;
                     break;
                 case Operation.Multiply:
-                    newValue *= modifierValueVector2 * multiplier;
+                    newValue *= modifierValueVector2;
                     break;
             }
 
