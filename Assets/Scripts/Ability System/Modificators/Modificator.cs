@@ -6,7 +6,7 @@ namespace ShatteredIceStudio.AbilitySystem.Modificators
 
     public abstract class Modificator : ScriptableObject
     {
-        public virtual void ApplyModification(AttributeSet attributeSet, float multiplier = 1)
+        public virtual void ApplyModification(AttributeSet attributeSet, AttributeSet effectorOwner)
         {
 
         }
