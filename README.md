@@ -2,7 +2,8 @@
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Concepts](#concepts)
+2. [Installation](#installation)
+3. [Concepts](#concepts)
    1. [Effectors](#1-effectors)
    2. [Modificators](#2-modificators)
    3. [Tags](#3-tags)
@@ -18,6 +19,10 @@ The Ability System is used to manage entities’ data and abilities.
 Its core concept is based on Unreal’s GAS (Gameplay Ability System). The Ability System serves as a foundation of the project's abilities, enabling other features to be managed through abilities while avoiding unnecessary dependencies and in the result, complexity.
 
 ---
+
+## Installation
+
+**Package Manager Git URL:** https://github.com/Icelogia/AbilitySystem.git?path=Assets/AbilitySystem 
 
 ## Concepts
 
