@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ShatteredIceStudio.AbilitySystem.AbilityControllers
+namespace ShatteredIceStudio.AbilitySystem.Abilities
 {
     using ShatteredIceStudio.Core;
 

@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Entities/Caster/Caster_InitData.asset.meta
+guid: 688c1e7d2f39b334696825f14f74ad7f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+========
 guid: 99db59bc3e8ba794c89a71b009d6131b
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
+>>>>>>>> main:Assets/AbilitySystem.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
