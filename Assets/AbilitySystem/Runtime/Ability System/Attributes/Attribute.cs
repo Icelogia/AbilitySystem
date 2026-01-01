@@ -10,7 +10,7 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
 
         public AttributeEvent<T> OnAttributeChanged;
 
-        private T attribute;
+        [SerializeField] private T attribute;
 
         public T Get()
         {
@@ -24,7 +24,10 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
         }
     }
 
+    [System.Serializable]
     public class IntAttribute : Attribute<int> {}
+    [System.Serializable]
     public class FloatAttribute : Attribute<float> {}
+    [System.Serializable]
     public class Vector2Attribute : Attribute<Vector2> {}
 }
