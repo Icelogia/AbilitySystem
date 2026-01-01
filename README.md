@@ -11,6 +11,10 @@
    5. [Attribute Set](#5-attribute-set)
    6. [Ability Controller](#6-ability-controller)
 3. [Usage](#usage)
+   1. [AttributeSet setup](#1-attributeset)
+   2. [Effectors](#2-effectors)
+   3. [Debugging](#3-debugging)
+   4. [Abilities](#4-abilities)
 ---
 
 ## Introduction
@@ -102,3 +106,8 @@ Base class of all future abilities. Handles cooldown and presents common methods
 ---
 
 ## Usage
+
+### 1. AttributeSet
+### 2. Effectors
+### 3. Debugging
+### 4. Abilities
