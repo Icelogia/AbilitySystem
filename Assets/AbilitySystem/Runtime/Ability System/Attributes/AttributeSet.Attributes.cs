@@ -12,20 +12,22 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
     {
         public readonly Dictionary<AttributeType, Attribute> Attributes = new Dictionary<AttributeType, Attribute>();
 
-        public readonly IntAttribute Health = new IntAttribute();
-        public readonly IntAttribute MaxHealth = new IntAttribute();
-        public readonly FloatAttribute Speed = new FloatAttribute();
-
-
         [SerializeField] private Effector initAttributesEffector;
 
+        [Space]
+        [Header("Attributes")]
+        public IntAttribute Health;
+        public IntAttribute MaxHealth;
+        public FloatAttribute Speed;
 
         private bool initialized = false;
 
         public void Initialize(Effector initData)
         {
             initialized = true;
-            Apply(initData, this);
+
+            if(initAttributesEffector != null)
+                Apply(initData, this);
         }
 
         protected virtual void InitAttributes()
