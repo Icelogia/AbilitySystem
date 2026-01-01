@@ -183,6 +183,8 @@ Modifier Value is a float field but for integer attributes, the value will be ro
 
 **This is only a preference setup.** You are welcome to change it or separate modificators for specific attributes.
 
+![Add Modificator](https://github.com/Icelogia/AbilitySystem/blob/main/Assets/Docs/Images/AS_add_modificator.png)
+
 - Custom Modificator
 To make more mathematical changes or based on other statistics you can create a Custom Modificator. To present an example, there was HealthBasedDamageModificator created in samples:
 
@@ -209,11 +211,14 @@ public class HealthBasedDamageModificator : Modificator
 ```
 
 You can see here how you can retrieve attributes and change it based on effector’s owner and targets’ attributes.
+
+![Custom Modificator](https://github.com/Icelogia/AbilitySystem/blob/main/Assets/Docs/Images/AS_projectile_modificator.png)
+
 2. Create effector
 Now we can create our effector. 
 _Right click in Project window -> Create -> Ability System -> Effector_
 
-
+![Projectile Effector](https://github.com/Icelogia/AbilitySystem/blob/main/Assets/Docs/Images/AS_projectile_effector.png)
 
 3. Applying modifications to AttributeSet
 Now we just need to apply an effector to AttributeSet. We can see an example in SimpleProjectile from a sample. Projectile detected AttributeSet and applied held effector. Additionally it passed the owner AttributeSet for custom calculations. Note that you will need to pass this object in some way.
@@ -237,6 +242,9 @@ public class SimpleProjectile : MonoBehaviour
 AttributeSet contains a Debugging tab with 
 - ActiveEffectors - list of currently active effectors. This list is specifically to track effectors that have timing set to different values than instant.
 - EffectorsHistory - list of 10 recent effectors applied to the AttributeSet. Threshold is defined inside AttributeSet.Modifications with historyThreshold const value.
+
+![AttributeSet Debug](https://github.com/Icelogia/AbilitySystem/blob/main/Assets/Docs/Images/AS_debugging.png)
+
 ### 4. Abilities
 1. Create new ability
 To create a new ability firstly you need to create a class inheriting from AbilityController. In the sample there is an ACSimpleProjectile. Main part of ability are Aim, Cast and Update methods where you define abilities behaviour as you please.
