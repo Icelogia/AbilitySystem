@@ -12,6 +12,7 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
     {
         public readonly Dictionary<AttributeType, Attribute> Attributes = new Dictionary<AttributeType, Attribute>();
 
+        [Tooltip("Initiali data set during initialization. It is not required but recommended.")]
         [SerializeField] private Effector initAttributesEffector;
 
         [Space]
