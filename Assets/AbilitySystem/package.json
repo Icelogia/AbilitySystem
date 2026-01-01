@@ -1,7 +1,6 @@
 {
     "name": "com.shatteredicestudio.abilitysystem",
     "version": "1.0.0",
-    "unity": "2018.4",
     "displayName": "Ability System",
     "description": "This package contains foundation of abilty system allowing easier abilty implementation and data manipulation.",
     "author": {
