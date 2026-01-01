@@ -103,9 +103,6 @@ The AttributeSet is the main container for all entity data—attributes and tags
 
 Base class of all future abilities. Handles cooldown and presents common methods that will be used in other scripts as Aim, Cast, CanCast and SetAbilityHolder.
 
-
----
-
 ## Usage
 
 ### 1. AttributeSet
@@ -167,6 +164,8 @@ ter adding component you can see its properties.
 There are two ways of setting initial attributes data. You can either set their properties values or set them via effector during initialization. Init Effector takes priority and will override targeted attributes during runtime.
 
 More about effectors and debugging sections in [Effectors](#2-effectors) and [Debugging](#3-debugging).
+
+---
 
 ### 2. Effectors
 1. Create modificator
@@ -238,12 +237,17 @@ public class SimpleProjectile : MonoBehaviour
       ...
 }
 ```
+
+---
+
 ### 3. Debugging
 AttributeSet contains a Debugging tab with 
 - ActiveEffectors - list of currently active effectors. This list is specifically to track effectors that have timing set to different values than instant.
 - EffectorsHistory - list of 10 recent effectors applied to the AttributeSet. Threshold is defined inside AttributeSet.Modifications with historyThreshold const value.
 
 ![AttributeSet Debug](https://github.com/Icelogia/AbilitySystem/blob/main/Assets/Docs/Images/AS_debugging.png)
+
+---
 
 ### 4. Abilities
 1. Create new ability
@@ -296,6 +300,8 @@ public class ACSimpleProjectile : AbilityController
 
 2. Ability Holder
 However, before going into play mode and having fun with your abilities there is one more recommendation. It is good  to set the IAbilityHolder holder with the SetAbilityHolder method. You can do this in any script or controller. Holder is a context object that allows retrieval of data by ability to affect in some way the ability holder. For example you can use it for animation or to apply custom modificators.
+
+---
 
 ### 5. Attribute Changes
 To track attribute's value change you can either use Get method or OnAttributeChanged event. To do this you need to directly retrive attribute you want to target and apply read functionality. In samples it has been done for target's health bar in HUD.
