@@ -31,10 +31,8 @@ namespace ShatteredIceStudio.AbilitySystem.Abilities
             projectile.SetOwner(holder.GetAttributeSet());
         }
 
-        protected override void Update()
+        protected void Update()
         {
-            base.Update();
-
             if(holder != null)
                 aimDirection = (holder.GetTargetPosition() - transform.position).normalized;
 
