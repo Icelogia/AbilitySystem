@@ -13,6 +13,10 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
         protected virtual void OnDisable()
         {
             CancelToken();
+
+#if UNITY_EDITOR
+            ClearActiveEffectors();
+#endif
         }
 
         protected virtual void OnDestroy()

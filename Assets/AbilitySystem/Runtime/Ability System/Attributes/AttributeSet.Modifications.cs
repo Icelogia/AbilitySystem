@@ -177,6 +177,12 @@ namespace ShatteredIceStudio.AbilitySystem.Attributes
             ActiveEffectors.Remove(context);
             OnActiveListChanged?.Invoke();
         }
+
+        private void ClearActiveEffectors()
+        {
+            ActiveEffectors.Clear();
+            OnActiveListChanged?.Invoke();
+        }
 #endif
     }
 }
