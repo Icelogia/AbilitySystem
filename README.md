@@ -27,7 +27,10 @@ Its core concept is based on Unreal’s GAS (Gameplay Ability System). The Abili
 
 ## Installation
 
-**Package Manager Git URL:** https://github.com/Icelogia/AbilitySystem.git?path=Assets/AbilitySystem 
+1. Donwload unity package
+[Download AbilitySystem v1.0.3](https://raw.githubusercontent.com/Icelogia/AbilitySystem/main/AbilitySystem%20v1.0.3.unitypackage)
+
+2. Import unity package to the project by either dragging unity package file to the unity window or by importing file.
 
 ## Concepts
 
