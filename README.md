@@ -27,10 +27,12 @@ Its core concept is based on Unreal’s GAS (Gameplay Ability System). The Abili
 
 ## Installation
 
-1. Donwload unity package
+1. Install **UniTask** from https://github.com/Cysharp/UniTask
+
+2. Donwload unity package
 [Download AbilitySystem v1.0.3](https://raw.githubusercontent.com/Icelogia/AbilitySystem/main/AbilitySystem%20v1.0.3.unitypackage)
 
-2. Import unity package to the project by either dragging unity package file to the unity window or by importing file.
+3. Import unity package to the project by either dragging unity package file to the unity window or by importing file.
 
 ## Concepts
 
