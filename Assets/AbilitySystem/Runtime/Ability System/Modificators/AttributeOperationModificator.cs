@@ -21,6 +21,12 @@ namespace ShatteredIceStudio.AbilitySystem.Modificators
 
         public override void ApplyModification(AttributeSet attributeSet, AttributeSet owner)
         {
+            if(!attributeSet.Attributes.ContainsKey(attributeType))
+            {
+                Debug.LogWarning(attributeSet.ToString() + " doesn't contain attribute: " + attributeType.ToString());
+                return;
+            }
+
             Attribute attribute = attributeSet.Attributes[attributeType];
 
             switch(attribute)

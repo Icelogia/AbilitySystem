@@ -61,7 +61,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5e3b6aaf0d2764ebeef8cf5f49a0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShatteredIceStudio.AbilitySystem.Attributes.AttributeSet
-  initAttributesEffector: {fileID: 11400000, guid: 6b01df3bf7d4f484aa267b4c37f6c587, type: 2}
+  initAttributesEffector: {fileID: 11400000, guid: e365b0668767ba24a8cf5053f3328e02, type: 2}
+  Health:
+    attribute: 0
+  MaxHealth:
+    attribute: 0
+  Speed:
+    attribute: 0
 --- !u!1 &6053967127368387422
 GameObject:
   m_ObjectHideFlags: 0
